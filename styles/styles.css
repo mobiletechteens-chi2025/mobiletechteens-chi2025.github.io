@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Mulish', sans-serif;
+}
+
+/* Define theme colors */
+:root {
+  --primary-color: #68A5B3;
+  /* Main theme color */
+  --secondary-color: #FFF1BF;
+  /* Sub-theme color */
+}
+
+/* Use the theme color for elements */
+.header,
+.footer {
+  background-color: var(--theme-color);
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+
+  .text-primary {
+    color: var(--primary-color);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+
+  .text-stroke-white {
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+  }
+
+}
+
+/* Additional styles can be added here */
