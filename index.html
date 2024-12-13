@@ -8,14 +8,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.8.0/antd.min.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/styles.css?v=1.0.1">
 </head>
 
 <body class="text-gray-800">
   <header class="bg-white text-primary fixed top-0 w-full z-20 shadow-lg">
     <div class="container mx-auto py-4 px-6 flex justify-between items-center">
       <h1 class="text-2xl font-bold">[Logo] Mobile Tech & Teens</h1>
-      <nav class="space-x-4 font-bold">
+      <button id="menu-toggle" class="block md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <nav id="menu" class="hidden md:flex md:flex-row md:space-x-4 font-bold">
+        <!-- <nav id="menu" class="hidden md:flex space-x-4 font-bold"> -->
         <a href="#callforparticipation" class="hover:underline nav-link">Call for Participation</a>
         <a href="#agenda" class="hover:underline nav-link">Workshop Agenda</a>
         <a href="#organizers" class="hover:underline nav-link">Organizers</a>
@@ -44,6 +50,14 @@
   </footer>
 
   <script src="scripts/main.js"></script>
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex'); // Apply flex display
+      menu.classList.toggle('flex-col');
+    });
+  </script>
 </body>
 
 </html>
