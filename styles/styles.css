@@ -44,4 +44,17 @@ body {
 
 }
 
-/* Additional styles can be added here */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+header.dark-mode {
+  background-color: #1e1e1e;
+}
+
+footer.dark-mode {
+  background-color: #1e1e1e;
+}
+
+/* Additional dark mode styles can be added here */
