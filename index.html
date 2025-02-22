@@ -6,10 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Tech & Teens</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const version = new Date().getTime();
+    const cssLink = document.createElement("link");
+    cssLink.rel = "stylesheet";
+    cssLink.href = "styles/styles.css?v=" + version;
+    document.head.appendChild(cssLink);
+  </script>
+
   <link rel="icon" type="image/svg+xml" href="resources/logo.svg">
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.8.0/antd.min.css">
-  <link rel="stylesheet" href="styles/styles.css?v=1.1.13">
+  <link rel="stylesheet" href="styles/styles.css?v=13">
 </head>
 
 <body class="text-gray-800">
