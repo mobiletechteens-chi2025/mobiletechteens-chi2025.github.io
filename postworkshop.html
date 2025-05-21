@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-workshop Updates | Mobile Tech & Teens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const version = new Date().getTime();
+    const cssLink = document.createElement("link");
+    cssLink.rel = "stylesheet";
+    cssLink.href = "styles/styles.css?v=" + version;
+    document.head.appendChild(cssLink);
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="resources/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.8.0/antd.min.css">
+  <link rel="stylesheet" href="styles/styles.css?v=20">
+</head>
+
+<body class="text-gray-800">
+  <!-- Header (from external file) -->
+  <section id="navbar" data-section="sections/navbar.html"></section>
+
+  <main class="pt-24">
+    <!-- Post-workshop main content here -->
+    <section id="postworkshop-content" class="py-12 px-6 bg-white width-full">
+      <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Position Papers</h1>
+        <div id="papers-list" class="space-y-4"></div>
+      </div>
+    </section>
+  </main>
+
+  <section id="footer" data-section="sections/footer.html"></section>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('[data-section]').forEach(function (section) {
+        const url = section.getAttribute('data-section');
+        fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            section.innerHTML = html;
+          })
+          .catch(err => {
+            console.error(`Failed to load ${url}`, err);
+          });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('#menu-toggle')) {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('hidden');
+          menu.classList.toggle('flex');
+          menu.classList.toggle('flex-col');
+        }
+      });
+
+      fetch('data/position-papers.json')
+        .then(response => response.json())
+        .then(papers => {
+          const listContainer = document.getElementById('papers-list');
+          if (!listContainer) return;
+
+          papers.forEach(paper => {
+            const entry = document.createElement('div');
+            entry.className = 'p-4 border rounded shadow-md';
+            entry.innerHTML = `
+              <h2 class="text-xl font-semibold mb-1">${paper.title}</h2>
+              <p class="text-gray-700 mb-2">${paper.authors}</p>
+              <a href="${paper.link}" class="text-blue-600 underline" target="_blank">Read Paper</a>
+            `;
+            listContainer.appendChild(entry);
+          });
+        })
+        .catch(error => {
+          console.error('Failed to load position papers:', error);
+        });
+    });
+  </script>
+
+</body>
+
+</html>
